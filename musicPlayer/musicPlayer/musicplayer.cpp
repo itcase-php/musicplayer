@@ -59,6 +59,7 @@ void MusicPlayer::KeyDown()
         NextMusic();
         break;
     case 6:
+        RandomMusic();
         break;
     }
 }
@@ -112,6 +113,17 @@ void MusicPlayer::NextMusic()
     string closeCmd = cmd[CMD::Close] + Res::music[curIndex];
     mciSendStringA(closeCmd.c_str(), NULL, 0, NULL);
     curIndex==Res::music.size() ? curIndex=1 : curIndex++;
+    string openCmd = cmd[CMD::Open] + Res::music[curIndex];
+    mciSendStringA(openCmd.c_str(), NULL, 0, NULL);
+    string playCmd = cmd[CMD::Play] + Res::music[curIndex];
+    mciSendStringA(playCmd.c_str(), NULL, 0, NULL);
+}
+
+void MusicPlayer::RandomMusic()
+{
+    string closeCmd = cmd[CMD::Close] + Res::music[curIndex];
+    mciSendStringA(closeCmd.c_str(), NULL, 0, NULL);
+    curIndex = rand() % Res::music.size() + 1;
     string openCmd = cmd[CMD::Open] + Res::music[curIndex];
     mciSendStringA(openCmd.c_str(), NULL, 0, NULL);
     string playCmd = cmd[CMD::Play] + Res::music[curIndex];
