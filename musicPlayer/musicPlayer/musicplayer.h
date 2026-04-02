@@ -15,7 +15,7 @@ public:
     void ResumeMusic();
     void PreMusic();
     void NextMusic();
-
+    void RandomMusic(); //随机播放
 private:
     int curIndex;       // 当前播放的音乐下标
     vector<string> cmd; // 转存为字符串,方便后续调用系统命令行播放音乐

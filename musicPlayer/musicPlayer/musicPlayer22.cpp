@@ -1,6 +1,7 @@
 #include "musicplayer.h"
 int main()
 {
+	srand((unsigned int)time(nullptr));	// 设置随机数种子
 	MusicPlayer* p = new MusicPlayer;
 	while (1) {
 		p->Menu();
